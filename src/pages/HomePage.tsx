@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { Menu } from "@headlessui/react";
 import app from "../../output/app.json";
 import { useContent } from "../hooks/useContent";
+import Logo from "../assets/images/logo.svg";
 
 export default function HomePage() {
   const [loading, setLoading] = useState(false);
@@ -139,8 +140,8 @@ export default function HomePage() {
         <div className="container flex flex-col flex-wrap items-center justify-between py-5 mx-auto md:flex-row max-w-7xl">
           <div className="relative flex flex-col md:flex-row">
             <Link to="/" className="flex items-center mb-5 font-medium text-gray-900 lg:w-auto lg:items-center lg:justify-center md:mb-0">
-              <button className="flex items-center justify-center w-8 h-8 mr-3 text-white bg-gradient-to-r from-cyan-500  to-fuchsia-500 rounded-full border-slate-400 focus:outline-none"></button>
-              <span className="mx-auto ml-0 text-xl tracking-widest uppercase  leading-none  font-thin  text-slate-900 select-none">
+              <img src={Logo} width={30} height={40} />
+              <span className="mx-auto ml-2 text-xl tracking-widest uppercase  leading-none  font-thin  text-slate-900 select-none">
                 Community Forum
               </span>
             </Link>
