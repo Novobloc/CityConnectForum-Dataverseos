@@ -73,6 +73,16 @@ const postActions = [{ icon: HeartIcon }, { icon: ArrowsUpDownIcon }, { icon: Ch
 const PostComponent = ({ publishPost, posts }: any) => {
   console.log(posts, "posts satya");
 
+  const handlePublishPost = async (e) => {
+    e.preventDefault();
+    const data = {
+      title: "Hello ",
+      content: "This is my sec post",
+      plainText: "This is my sec post"
+    };
+    await publishPost(data);
+  };
+
   return (
     <div className="bg-blue-900">
       <div className="flex">
@@ -172,7 +182,7 @@ const PostComponent = ({ publishPost, posts }: any) => {
             <div className="flex-1">
               <button
                 className="bg-blue-400 mt-5 hover:bg-blue-600 text-white font-bold py-2 px-8 rounded-full mr-8 float-right"
-                onClick={() => publishPost()}>
+                onClick={handlePublishPost}>
                 Publish
               </button>
             </div>
