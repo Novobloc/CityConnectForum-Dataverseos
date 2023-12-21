@@ -75,19 +75,9 @@ export function useContent() {
     return contentRecordCopy[contentId];
   };
 
-  const loadContent = async (contentId: string) => {
-    const stream = await dataverseConnector.runOS({
-      method: SYSTEM_CALL.loadFile,
-      params: contentId
-    });
-
-    return stream;
-  };
-
   return {
-    contentRecord,
     loadContents,
-    loadContent,
+
     createPublicContent
   };
 }
