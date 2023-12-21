@@ -52,7 +52,7 @@ const PostAction = ({ icon: Icon }) => {
     <div className="flex-1 text-center py-2 m-2">
       <a
         href="#"
-        className="w-12 mt-1 group flex items-center text-gray-500 px-3 py-2 text-base leading-6 font-medium rounded-full hover:bg-blue-800 hover:text-blue-300">
+        className="w-12 mt-1 group flex items-center text-gray-500 px-3 py-2 text-base leading-6 font-medium rounded-full hover:text-red-700">
         {<Icon />}
       </a>
     </div>
