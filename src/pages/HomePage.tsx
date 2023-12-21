@@ -55,20 +55,15 @@ export default function HomePage() {
     storage.setItem("DID", did);
   };
 
-  const {
-    createPublicContent,
-    // loadContents: loadPostContents,
+  const { createPublicContent, loadContents: loadPostContents } = useContent();
 
-    contentRecord
-  } = useContent();
-
-  // useEffect(() => {
-  //   loadPosts();
-  // }, [did]);
+  useEffect(() => {
+    loadPosts();
+  }, [did]);
 
   const publishPost = async () => {
     const data = {
-      title: "Hello World",
+      title: "Hello World@ss",
       content: "This is my first post",
       plainText: "This is my first post"
     };
@@ -107,6 +102,36 @@ export default function HomePage() {
     console.log({ content: "Publish Successfully" });
 
     // loadPosts();
+  };
+
+  const loadPosts = async () => {
+    try {
+      if (!did) {
+        return;
+      }
+      setLoading(true);
+
+      const response = await loadPostContents({
+        did,
+        modelId: postModel.modelId
+      });
+
+      let postData = [];
+
+      for (const key of Object.keys(response)) {
+        const item = response[key];
+        let content = item.fileContent.content;
+        content.randomUUID = key;
+        postData.push(content);
+      }
+      postData = postData.reverse();
+      console.log('postData: ', postData);
+    
+
+      
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
