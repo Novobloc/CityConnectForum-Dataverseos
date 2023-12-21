@@ -1,12 +1,10 @@
-
-
 ![CityConnect Forum](src/assets/images/logo.png)
 
 ## CityConnect Forum
 
 ## A Decentralized Forum for city communities to post there greviences and get them resolved by the city officials.
 
-**CityConnect**  Forum is not just a platform; it's a dynamic and inclusive space where residents and officials collaboratively contribute to the betterment of their city, fostering a stronger sense of community and civic responsibility.built on  **dataverse os**.
+**CityConnect** Forum is not just a platform; it's a dynamic and inclusive space where residents and officials collaboratively contribute to the betterment of their city, fostering a stronger sense of community and civic responsibility.built on **dataverse os**.
 
 <br>
 
@@ -16,27 +14,18 @@
 
 ![Home](src/assets/images/logo.png)
 
-
 <br>
 
 Github : <a style="margin-bottom: 5px;" href="https://github.com/Novobloc/CityConnectForum-Dataverseos" target="_blank"> Repo Link </a>
 
-Video : <a style="margin-bottom: 5px;" href="https://youtu.be/kLZeHnbT0dA" target="_blank"> Youtube Link </a>
-
-## App Flow
-
-![Aaveasy](images/flow.png)
+Video : <a style="margin-bottom: 5px;" href="https://youtu.be/qgV1xddaLTc" target="_blank"> Youtube Link </a>
 
 ## Stack We Used
-
-![alt text](images/stack.png)
 
 1. Frontend: We used **React JS**, Tailwind CSS for UI.
 
 2. Blockchain :
    1. DataverseOS: We used **DataverseOS SDK** for storage and wallet.
-
-
 
 ## Steps to Run the Project
 
@@ -65,9 +54,9 @@ dataverse deploy
 yarn run dev
 ```
 
-4. Open this link in browser http://localhost:3000
+4. Open this link in browser http://localhost:5222
 
-5. Hey, You just ran the code in your system, thats it. Now you can invest in aave .
+5. Hey, You just ran the code in your system, thats it.
 
 <br>
 
