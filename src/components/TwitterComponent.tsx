@@ -1,9 +1,92 @@
-import React from "react";
+import React,{ useEffect, useState } from "react";
+import { useContent } from "../hooks/useContent";
 
 const TwitterComponent = () => {
+
+  const [did, setDid] = useState(null);
+
+  const {
+    createPublicContent,
+    // loadContents: loadPostContents,
+   
+    contentRecord,
+  } = useContent();
+
+
+  // useEffect(() => {
+  //   loadPosts();
+  // }, [did]);
+
+
+  const publishPost = async () => {
+
+    const data = {
+
+    }
+    const { randomUUID, title, content, plainText } = data;
+
+    if (!title) {
+      console.log({ content: "Title is required" });
+      return;
+    }
+
+    if (!content) {
+      console.log console.log(({ content: "Content is required" });
+      return;
+    }
+
+    // setPublishLoading(true);
+
+    if (randomUUID) {
+      console.log(contentRecord,randomUUID)
+      if (!contentRecord[randomUUID].fileContent.file.fileId) {
+        console.log({ content: "Sorry, it's not a mirror file." });
+        // setPublishLoading(false);
+        return;
+      }
+      await updateContent({
+        did,
+        model: postModel,
+        contentId: randomUUID,
+        content: {
+          ...editorRef.current.newPost,
+          updatedAt: dayjs().toISOString(),
+        },
+      });
+      console.log({ content: "Update Successfully" });
+    } else {
+      const postData: Post = {
+        appVersion: POST_VERSION,
+        title,
+        content,
+        plainText,
+        createdAt: dayjs().toISOString(),
+        updatedAt: dayjs().toISOString(),
+        category: ["default"],
+        tag: [],
+        randomUUID: crypto.randomUUID(),
+      };
+      await createPublicContent({
+        model: postModel,
+        content: {
+          ...postData,
+        },
+      });
+
+      Message({ content: "Publish Successfully" });
+    }
+
+    setPublishLoading(false);
+    loadPosts();
+    setMode(Mode.View);
+  };
+
+
   return (
     <div className="bg-blue-900">
       <div className="flex">
+        
+
         <div className="w-full lg:w-2/3 max-w-7xl mx-auto border border-gray-600 h-auto  border-t-0">
           <div className="flex">
             <div className="flex-1 m-2">
