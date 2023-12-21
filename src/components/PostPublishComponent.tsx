@@ -1,37 +1,6 @@
-import React from "react";
-import { Fragment, useState } from "react";
-import { Listbox, Transition } from "@headlessui/react";
-import { CalendarIcon, PaperClipIcon, TagIcon, UserCircleIcon } from "@heroicons/react/20/solid";
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
-
-const assignees = [
-  { name: "Unassigned", value: null },
-  {
-    name: "Wade Cooper",
-    value: "wade-cooper",
-    avatar:
-      "https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-  }
-  // More items...
-];
-const labels = [
-  { name: "Unlabelled", value: null },
-  { name: "Engineering", value: "engineering" }
-  // More items...
-];
-const dueDates = [
-  { name: "No due date", value: null },
-  { name: "Today", value: "today" }
-  // More items...
-];
+import React, { useState } from "react";
 
 const PostPublishComponent = ({ publishPost }: any) => {
-  const [assigned, setAssigned] = useState(assignees[0]);
-  const [labelled, setLabelled] = useState(labels[0]);
-  const [dated, setDated] = useState(dueDates[0]);
   const [titleInput, setTitleInput] = useState();
   const [descriptionInput, setDescriptionInput] = useState();
 
