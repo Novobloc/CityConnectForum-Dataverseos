@@ -1,11 +1,9 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Button, Tooltip, Spin } from "antd";
 import storage from "../utils/storage";
 import { useIdentity } from "../hooks/useIdentity";
-import app from "../../output/app.json";
 import { Model } from "../types";
 import { Link } from "react-router-dom";
-import { Menu, Transition, Dialog } from "@headlessui/react";
+import { Menu } from "@headlessui/react";
 
 function Header() {
   const [loading, setLoading] = useState(false);
@@ -20,25 +18,25 @@ function Header() {
     }
     return `${address.slice(0, width)}...${address.slice(-width)}`;
   };
-  useEffect(() => {
-    const { streams, ...rest } = app.models.find((model) => model.modelName === "post");
+  //   useEffect(() => {
+  //     const { streams, ...rest } = app.models.find((model) => model.modelName === "post");
 
-    const stream = streams.find((stream) => stream.latest && stream);
+  //     const stream = streams.find((stream) => stream.latest && stream);
 
-    setPostModel({
-      ...rest,
-      ...stream
-    });
+  //     setPostModel({
+  //       ...rest,
+  //       ...stream
+  //     });
 
-    const storeDID = storage.getItem("DID");
-    if (!storeDID) {
-      return;
-    }
+  //     const storeDID = storage.getItem("DID");
+  //     if (!storeDID) {
+  //       return;
+  //     }
 
-    setTimeout(() => {
-      connect();
-    }, 10);
-  }, []);
+  //     setTimeout(() => {
+  //       connect();
+  //     }, 10);
+  //   }, []);
 
   const connect = async () => {
     setConnectLoading(true);
