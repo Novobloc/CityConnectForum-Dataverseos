@@ -9,7 +9,7 @@ const ellipseAddress = (address = "", width = 10) => {
   return `${address.slice(0, width)}...${address.slice(-width)}`;
 };
 
-const Post = ({ randomUUID, createdAt, content, images }: any) => {
+const Post = ({ randomUUID, createdAt, title, content, images }: any) => {
   return (
     <>
       <div className="flex flex-shrink-0 p-4 pb-0">
@@ -23,7 +23,7 @@ const Post = ({ randomUUID, createdAt, content, images }: any) => {
               />
             </div>
             <div className="ml-3">
-              <p className="text-base leading-6 font-medium text-white">
+              <p className="text-base leading-6 font-medium text-[#0F1419]">
                 {ellipseAddress(randomUUID, 12)}
                 <span className="text-sm leading-5 font-medium text-gray-400 group-hover:text-gray-300 transition ease-in-out duration-150">
                   {createdAt}
@@ -34,7 +34,8 @@ const Post = ({ randomUUID, createdAt, content, images }: any) => {
         </a>
       </div>
       <div className="pl-16">
-        <p className="text-base width-auto font-medium text-white flex-shrink">{content}</p>
+        <p className="text-base width-auto font-medium text-[#0F1419] flex-shrink">{title}</p>
+        <p className="text-base width-auto font-medium text-[#0F1419] flex-shrink">{content}</p>
 
         {images && (
           <div className="md:flex-shrink pr-6 pt-3">
@@ -77,7 +78,7 @@ const PostComponent = ({ publishPost, posts }: any) => {
   return (
     <div className="">
       <div className="flex">
-        <div className="w-full lg:w-2/3 max-w-7xl mx-auto border border-gray-600 h-auto  border-t-0">
+        <div className="w-full lg:w-2/3 max-w-7xl mx-auto border border-gray-600 h-auto border-t-0">
           <PostPublishComponent publishPost={publishPost} />
 
           {posts && posts.length > 0 && posts.map((post, index) => <Post key={index} {...post} />)}
