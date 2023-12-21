@@ -2,7 +2,6 @@ import { useState, useContext } from "react";
 import { MirrorFile, SYSTEM_CALL } from "@dataverse/dataverse-connector";
 import { Context } from "../main";
 import { Model, ContentObject } from "../types";
-import { getAddressFromDid } from "../utils";
 
 export function useContent() {
   const { dataverseConnector } = useContext(Context);
@@ -45,10 +44,6 @@ export function useContent() {
         fileName: "Community Forum",
         fileContent: {
           ...content
-          // ...(!model.isPublicDomain &&
-          //   content && {
-          //     encrypted: JSON.stringify(encrypted),
-          //   }),
         }
       }
     });
@@ -80,13 +75,6 @@ export function useContent() {
         fileId,
         fileContent: {
           ...content,
-          // ...(!model.isPublicDomain &&
-          //   content &&
-          //   encrypted &&
-          //   (fileType === FileType.PrivateFileType ||
-          //     fileType === FileType.PayableFileType) && {
-          //     encrypted: JSON.stringify(encrypted),
-          //   }),
           syncImmediately: true
         }
       }
@@ -102,16 +90,6 @@ export function useContent() {
     };
   };
 
-  // Only files within the file system can be deleted, and records in contentRecord cannot be deleted
-  const deleteContent = async (content: MirrorFile) => {
-    const res = await dataverseConnector.runOS({
-      method: SYSTEM_CALL.removeFiles,
-      params: {
-        fileIds: [content.fileId]
-      }
-    });
-    return res;
-  };
 
   const reloadContentRecord = async ({ did, modelId, contentId }: { did: string; modelId: string; contentId: string }) => {
     const contentRecord = await loadContents({ did, modelId });
@@ -156,8 +134,6 @@ export function useContent() {
     contentRecord,
     loadContents,
     loadContent,
-    createPublicContent,
-    updateContent,
-    deleteContent
+    createPublicContent
   };
 }
