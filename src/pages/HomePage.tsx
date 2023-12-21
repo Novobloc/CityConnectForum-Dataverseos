@@ -122,8 +122,10 @@ export default function HomePage() {
         postData.push(content);
       }
       postData = postData.reverse();
+      const sortedArray = postData.sort((a: any, b: any) => new Date(b.createdAt) - new Date(a.createdAt));
+
       console.log("postData: ", postData);
-      setPosts(postData);
+      setPosts(sortedArray);
     } finally {
       setLoading(false);
     }
