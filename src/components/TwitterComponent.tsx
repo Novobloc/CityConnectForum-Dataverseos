@@ -1,6 +1,12 @@
 import React from "react";
 import { ChatBubbleLeftEllipsisIcon, HandThumbUpIcon, HeartIcon, ArrowsUpDownIcon } from "@heroicons/react/20/solid";
-const Tweet = ({ username, date, content, images }: any) => {
+const ellipseAddress = (address = "", width = 10) => {
+  if (!address) {
+    return "";
+  }
+  return `${address.slice(0, width)}...${address.slice(-width)}`;
+};
+const Tweet = ({ randomUUID, createdAt, content, images }: any) => {
   return (
     <>
       <div className="flex flex-shrink-0 p-4 pb-0">
@@ -15,9 +21,9 @@ const Tweet = ({ username, date, content, images }: any) => {
             </div>
             <div className="ml-3">
               <p className="text-base leading-6 font-medium text-white">
-                {username}
+                {ellipseAddress(randomUUID, 12)}
                 <span className="text-sm leading-5 font-medium text-gray-400 group-hover:text-gray-300 transition ease-in-out duration-150">
-                  {date}
+                  {createdAt}
                 </span>
               </p>
             </div>
@@ -50,7 +56,6 @@ const Tweet = ({ username, date, content, images }: any) => {
   );
 };
 
-// Tweet Action Component
 const TweetAction = ({ icon: Icon }) => {
   return (
     <div className="flex-1 text-center py-2 m-2">
@@ -63,28 +68,11 @@ const TweetAction = ({ icon: Icon }) => {
   );
 };
 
-// Sample data for tweets
-const tweetsData = [
-  {
-    username: "Sonali Hirave",
-    date: "@ShonaDesign . 16 April",
-    content:
-      "Day 07 of the challenge #100DaysOfCode I was wondering what I can do with #tailwindcss, so just started building Twitter UI using Tailwind and so far it looks so promising. I will post my code after completion. [07/100] #WomenWhoCode #CodeNewbie",
-    images: "https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=448&q=80"
-  },
-  {
-    username: "Sonali Hirave",
-    date: "@ShonaDesign . 16 April",
-    content:
-      "Day 07 of the challenge #100DaysOfCode I was wondering what I can do with #tailwindcss, so just started building Twitter UI using Tailwind and so far it looks so promising. I will post my code after completion. [07/100] #WomenWhoCode #CodeNewbie"
-  }
-  // Add more tweet data as needed
-];
-
 const tweetActions = [{ icon: HeartIcon }, { icon: ArrowsUpDownIcon }, { icon: ChatBubbleLeftEllipsisIcon }];
 
-// Parent component using the Tweet component in a loop
-const TwitterComponent = ({ publishPost }: any) => {
+const TwitterComponent = ({ publishPost, posts }: any) => {
+  console.log(posts, "posts satya");
+
   return (
     <div className="bg-blue-900">
       <div className="flex">
@@ -191,9 +179,7 @@ const TwitterComponent = ({ publishPost }: any) => {
           </div>
 
           {/* Render tweets using the Tweet component in a loop */}
-          {tweetsData.map((tweet, index) => (
-            <Tweet key={index} {...tweet} />
-          ))}
+          {posts && posts.length > 0 && posts.map((post, index) => <Tweet key={index} {...post} />)}
         </div>
       </div>
     </div>

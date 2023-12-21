@@ -15,6 +15,7 @@ export default function HomePage() {
   const [did, setDid] = useState(null);
   const [postModel, setPostModel] = useState<Model>();
   const [connectLoading, setConnectLoading] = useState(false);
+  const [posts, setPosts] = useState(null);
 
   const ellipseAddress = (address = "", width = 10) => {
     if (!address) {
@@ -101,7 +102,7 @@ export default function HomePage() {
 
     console.log({ content: "Publish Successfully" });
 
-    // loadPosts();
+    loadPosts();
   };
 
   const loadPosts = async () => {
@@ -112,7 +113,7 @@ export default function HomePage() {
       setLoading(true);
 
       const response = await loadPostContents({
-        did,
+        // did,
         modelId: postModel.modelId
       });
 
@@ -125,10 +126,8 @@ export default function HomePage() {
         postData.push(content);
       }
       postData = postData.reverse();
-      console.log('postData: ', postData);
-    
-
-      
+      console.log("postData: ", postData);
+      setPosts(postData);
     } finally {
       setLoading(false);
     }
@@ -172,7 +171,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-      <TwitterComponent publishPost={publishPost} />
+      <TwitterComponent publishPost={publishPost} posts={posts} />
     </>
   );
 }
