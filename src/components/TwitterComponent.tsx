@@ -1,6 +1,6 @@
 import React from "react";
 import { ChatBubbleLeftEllipsisIcon, HandThumbUpIcon, HeartIcon, ArrowsUpDownIcon } from "@heroicons/react/20/solid";
-
+// onClick={() => publishPost()}
 const Tweet = ({ username, date, content, images }: any) => {
   return (
     <>
@@ -85,7 +85,7 @@ const tweetsData = [
 const tweetActions = [{ icon: HeartIcon }, { icon: ArrowsUpDownIcon }, { icon: ChatBubbleLeftEllipsisIcon }];
 
 // Parent component using the Tweet component in a loop
-const TwitterComponent = () => {
+const TwitterComponent = ({ publishPost }: any) => {
   return (
     <div className="bg-blue-900">
       <div className="flex">

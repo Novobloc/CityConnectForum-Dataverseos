@@ -6,6 +6,8 @@ import { useIdentity } from "../hooks/useIdentity";
 import { Model } from "../types";
 import { Link } from "react-router-dom";
 import { Menu } from "@headlessui/react";
+import app from "../../output/app.json";
+import { useContent } from "../hooks/useContent";
 
 export default function HomePage() {
   const [loading, setLoading] = useState(false);
@@ -20,25 +22,25 @@ export default function HomePage() {
     }
     return `${address.slice(0, width)}...${address.slice(-width)}`;
   };
-  //   useEffect(() => {
-  //     const { streams, ...rest } = app.models.find((model) => model.modelName === "post");
+  useEffect(() => {
+    const { streams, ...rest } = app.models.find((model) => model.modelName === "post");
 
-  //     const stream = streams.find((stream) => stream.latest && stream);
+    const stream = streams.find((stream) => stream.latest && stream);
 
-  //     setPostModel({
-  //       ...rest,
-  //       ...stream
-  //     });
+    setPostModel({
+      ...rest,
+      ...stream
+    });
 
-  //     const storeDID = storage.getItem("DID");
-  //     if (!storeDID) {
-  //       return;
-  //     }
+    const storeDID = storage.getItem("DID");
+    if (!storeDID) {
+      return;
+    }
 
-  //     setTimeout(() => {
-  //       connect();
-  //     }, 10);
-  //   }, []);
+    setTimeout(() => {
+      connect();
+    }, 10);
+  }, []);
 
   const connect = async () => {
     setConnectLoading(true);
@@ -52,6 +54,61 @@ export default function HomePage() {
     setDid(did);
     storage.setItem("DID", did);
   };
+
+  const {
+    createPublicContent,
+    // loadContents: loadPostContents,
+
+    contentRecord
+  } = useContent();
+
+  // useEffect(() => {
+  //   loadPosts();
+  // }, [did]);
+
+  const publishPost = async () => {
+    const data = {
+      title: "Hello World",
+      content: "This is my first post",
+      plainText: "This is my first post"
+    };
+    const { title, content, plainText } = data;
+
+    if (!title) {
+      console.log({ content: "Title is required" });
+      return;
+    }
+
+    if (!content) {
+      console.log({ content: "Content is required" });
+      return;
+    }
+
+    // setPublishLoading(true);
+
+    const postData = {
+      appVersion: "0.0.1",
+      title,
+      content,
+      plainText,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+      category: ["default"],
+      tag: [],
+      randomUUID: crypto.randomUUID()
+    };
+    await createPublicContent({
+      model: postModel,
+      content: {
+        ...postData
+      }
+    });
+
+    console.log({ content: "Publish Successfully" });
+
+    // loadPosts();
+  };
+
   return (
     <>
       <section className="w-full px-8 text-gray-700 bg-white">
@@ -90,7 +147,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-      <TwitterComponent />
+      <TwitterComponent publishPost={publishPost} />
     </>
   );
 }
