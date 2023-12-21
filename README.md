@@ -1,6 +1,6 @@
 
 
-![CityConnect Forum](images/aaveasy.png)
+![CityConnect Forum](src/assets/images/logo.png)
 
 ## CityConnect Forum
 
@@ -14,7 +14,7 @@
 
 ### Home Page
 
-![Home](images/home.png)
+![Home](src/assets/images/logo.png)
 
 
 <br>
