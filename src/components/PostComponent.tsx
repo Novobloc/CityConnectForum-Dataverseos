@@ -1,6 +1,13 @@
 import Avatar from "react-avatar";
 import { HeartIcon } from "@heroicons/react/20/solid";
 import PostPublishComponent from "./PostPublishComponent";
+import { formatDistanceToNow } from "date-fns";
+
+const TimeAgo = ({ timestamp }) => {
+  const formattedTime = formatDistanceToNow(new Date(timestamp), { addSuffix: true });
+
+  return <span>{formattedTime}</span>;
+};
 
 const ellipseAddress = (address = "", width = 10) => {
   if (!address) {
@@ -22,7 +29,7 @@ const Post = ({ randomUUID, createdAt, title, content, images }: any) => {
             <div className="ml-3">
               <p className="text-base font-mono leading-6 font-medium text-black">
                 {ellipseAddress(randomUUID, 12)}
-                <span className="pl-3 text-sm leading-5 font-medium italic font-mono text-slate-600">{createdAt}</span>
+                <span className="pl-3 text-sm leading-5 font-medium italic font-mono text-slate-600">{<TimeAgo timestamp={createdAt} />}</span>
               </p>
             </div>
           </div>
