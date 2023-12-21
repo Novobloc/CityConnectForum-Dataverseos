@@ -10,6 +10,7 @@ import app from "../../output/app.json";
 import { useContent } from "../hooks/useContent";
 import Logo from "../assets/images/logo.png";
 
+
 export default function HomePage() {
   const [loading, setLoading] = useState(false);
   const { connectIdentity } = useIdentity();
@@ -169,7 +170,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-      <PostComponent publishPost={publishPost} posts={posts} />
+      <PostComponent did={did} publishPost={publishPost} posts={posts} />
     </>
   );
 }

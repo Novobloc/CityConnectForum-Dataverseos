@@ -2,6 +2,7 @@ import Avatar from "react-avatar";
 import { HeartIcon } from "@heroicons/react/20/solid";
 import PostPublishComponent from "./PostPublishComponent";
 import { formatDistanceToNow } from "date-fns";
+import NotConnected from "../assets/images/notconected.png";
 
 const TimeAgo = ({ timestamp }) => {
   const formattedTime = formatDistanceToNow(new Date(timestamp), { addSuffix: true });
@@ -60,13 +61,20 @@ const PostAction = ({ icon: Icon }) => {
 
 const postActions = [{ icon: HeartIcon }];
 
-const PostComponent = ({ publishPost, posts }: any) => {
+const PostComponent = ({ publishPost, posts, did }: any) => {
   console.log(posts, "posts satya");
 
   return (
     <div className="flex">
       <div className="w-full lg:w-2/3 max-w-7xl mx-auto h-auto ">
-        <PostPublishComponent publishPost={publishPost} />
+        {did ? (
+          <PostPublishComponent publishPost={publishPost} />
+        ) : (
+          <div className="flex flex-col items-center  w-full mx-auto pt-10">
+            <span className="font-mono">Wallet Not Connected</span>
+            <img src={NotConnected} width={300} height={300} />
+          </div>
+        )}
         {posts && posts.length > 0 && posts.map((post, index) => <Post key={index} {...post} />)}
       </div>
     </div>
