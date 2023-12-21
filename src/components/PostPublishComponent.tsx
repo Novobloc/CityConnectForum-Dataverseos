@@ -17,7 +17,7 @@ const PostPublishComponent = ({ publishPost }: any) => {
   };
 
   return (
-    <form action="#" className="relative">
+    <form action="#" className="relative my-8">
       <div className="overflow-hidden rounded-lg border border-gray-300 shadow-sm">
         <label htmlFor="title" className="sr-only">
           Title

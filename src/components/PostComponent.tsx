@@ -65,13 +65,10 @@ const PostComponent = ({ publishPost, posts }: any) => {
   console.log(posts, "posts satya");
 
   return (
-    <div className="">
-      <div className="flex">
-        <div className="w-full lg:w-2/3 max-w-7xl mx-auto h-auto ">
-          <PostPublishComponent publishPost={publishPost} />
-
-          {posts && posts.length > 0 && posts.map((post, index) => <Post key={index} {...post} />)}
-        </div>
+    <div className="flex">
+      <div className="w-full lg:w-2/3 max-w-7xl mx-auto h-auto ">
+        <PostPublishComponent publishPost={publishPost} />
+        {posts && posts.length > 0 && posts.map((post, index) => <Post key={index} {...post} />)}
       </div>
     </div>
   );
