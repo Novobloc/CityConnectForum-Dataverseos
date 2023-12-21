@@ -1,4 +1,4 @@
-import React from "react";
+import Avatar from 'react-avatar';
 import { ChatBubbleLeftEllipsisIcon, HeartIcon, ArrowsUpDownIcon } from "@heroicons/react/20/solid";
 
 const ellipseAddress = (address = "", width = 10) => {
@@ -15,16 +15,14 @@ const Post = ({ randomUUID, createdAt, content, images }: any) => {
         <a href="#" className="flex-shrink-0 group block">
           <div className="flex items-center">
             <div>
-              <img
-                className="inline-block h-10 w-10 rounded-full"
-                src="https://pbs.twimg.com/profile_images/1121328878142853120/e-rpjoJi_bigger.png"
-                alt=""
-              />
+            <Avatar name={ellipseAddress(randomUUID, 12)} size="50" round="100px" />
             </div>
+            
+
             <div className="ml-3">
-              <p className="text-base leading-6 font-medium text-white">
+              <p className="text-base font-mono leading-6 font-medium text-black">
                 {ellipseAddress(randomUUID, 12)}
-                <span className="text-sm leading-5 font-medium text-gray-400 group-hover:text-gray-300 transition ease-in-out duration-150">
+                <span className="pl-3 text-sm leading-5 font-medium italic font-mono text-slate-600">
                   {createdAt}
                 </span>
               </p>
@@ -33,7 +31,8 @@ const Post = ({ randomUUID, createdAt, content, images }: any) => {
         </a>
       </div>
       <div className="pl-16">
-        <p className="text-base width-auto font-medium text-white flex-shrink">{content}</p>
+        <p className="text-base width-auto font-medium text-slate-700 flex-shrink">Title</p>
+        <p className="text-base width-auto font-medium text-slate-500 flex-shrink">{content}</p>
 
         {images && (
           <div className="md:flex-shrink pr-6 pt-3">
