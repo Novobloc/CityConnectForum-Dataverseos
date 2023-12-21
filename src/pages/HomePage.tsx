@@ -64,11 +64,6 @@ export default function HomePage() {
   }, [did]);
 
   const publishPost = async (data) => {
-    // const data = {
-    //   title: "Hello World@ss",
-    //   content: "This is my first post",
-    //   plainText: "This is my first post"
-    // };
     const { title, content, plainText } = data;
 
     if (!title) {
