@@ -36,7 +36,7 @@ const Post = ({ randomUUID, createdAt, title, content, images }: any) => {
 
       <div className="pl-16">
         <p className="text-lg font-medium text-[#0F1419] mb-2">{title}</p>
-        <p className="text-base font-medium text-[#0F1419] mb-4">{content}</p>
+        <p className="text-base font-thin text-[#0F1419] mb-4">{content}</p>
 
         <div className="flex items-center space-x-4">
           {postActions.map((action, index) => (
@@ -51,7 +51,7 @@ const Post = ({ randomUUID, createdAt, title, content, images }: any) => {
 const PostAction = ({ icon: Icon }) => {
   return (
     <div className="flex-1 text-center py-2 m-2">
-      <a href="#" className="w-12 mt-1 group flex items-center text-gray-500 py-2 text-base leading-6 font-medium rounded-full hover:text-red-700">
+      <a href="#" className="w-6 mt-1 group flex items-center text-gray-500 py-2 text-base leading-6 font-medium rounded-full hover:text-red-700">
         {<Icon />}
       </a>
     </div>
