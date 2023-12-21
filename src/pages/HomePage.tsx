@@ -1,6 +1,6 @@
 /* This example requires Tailwind CSS v2.0+ */
 import React, { useEffect, useState, useRef } from "react";
-import TwitterComponent from "../components/TwitterComponent";
+import PostComponent from "../components/PostComponent";
 import storage from "../utils/storage";
 import { useIdentity } from "../hooks/useIdentity";
 import { Model } from "../types";
@@ -171,7 +171,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-      <TwitterComponent publishPost={publishPost} posts={posts} />
+      <PostComponent publishPost={publishPost} posts={posts} />
     </>
   );
 }

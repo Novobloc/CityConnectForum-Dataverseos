@@ -1,12 +1,14 @@
 import React from "react";
-import { ChatBubbleLeftEllipsisIcon, HandThumbUpIcon, HeartIcon, ArrowsUpDownIcon } from "@heroicons/react/20/solid";
+import { ChatBubbleLeftEllipsisIcon, HeartIcon, ArrowsUpDownIcon } from "@heroicons/react/20/solid";
+
 const ellipseAddress = (address = "", width = 10) => {
   if (!address) {
     return "";
   }
   return `${address.slice(0, width)}...${address.slice(-width)}`;
 };
-const Tweet = ({ randomUUID, createdAt, content, images }: any) => {
+
+const Post = ({ randomUUID, createdAt, content, images }: any) => {
   return (
     <>
       <div className="flex flex-shrink-0 p-4 pb-0">
@@ -33,19 +35,17 @@ const Tweet = ({ randomUUID, createdAt, content, images }: any) => {
       <div className="pl-16">
         <p className="text-base width-auto font-medium text-white flex-shrink">{content}</p>
 
-        {/* Additional content (e.g., images) */}
         {images && (
           <div className="md:flex-shrink pr-6 pt-3">
-            <img className="rounded-lg w-full h-64" src={images} alt="Tweet Media" />
+            <img className="rounded-lg w-full h-64" src={images} alt="Post Media" />
           </div>
         )}
 
-        {/* Tweet actions */}
         <div className="flex">
           <div className="w-full">
             <div className="flex items-center">
-              {tweetActions.map((action, index) => (
-                <TweetAction key={index} icon={action.icon} />
+              {postActions.map((action, index) => (
+                <PostAction key={index} icon={action.icon} />
               ))}
             </div>
           </div>
@@ -56,7 +56,7 @@ const Tweet = ({ randomUUID, createdAt, content, images }: any) => {
   );
 };
 
-const TweetAction = ({ icon: Icon }) => {
+const PostAction = ({ icon: Icon }) => {
   return (
     <div className="flex-1 text-center py-2 m-2">
       <a
@@ -68,9 +68,9 @@ const TweetAction = ({ icon: Icon }) => {
   );
 };
 
-const tweetActions = [{ icon: HeartIcon }, { icon: ArrowsUpDownIcon }, { icon: ChatBubbleLeftEllipsisIcon }];
+const postActions = [{ icon: HeartIcon }, { icon: ArrowsUpDownIcon }, { icon: ChatBubbleLeftEllipsisIcon }];
 
-const TwitterComponent = ({ publishPost, posts }: any) => {
+const PostComponent = ({ publishPost, posts }: any) => {
   console.log(posts, "posts satya");
 
   return (
@@ -178,12 +178,11 @@ const TwitterComponent = ({ publishPost, posts }: any) => {
             </div>
           </div>
 
-          {/* Render tweets using the Tweet component in a loop */}
-          {posts && posts.length > 0 && posts.map((post, index) => <Tweet key={index} {...post} />)}
+          {posts && posts.length > 0 && posts.map((post, index) => <Post key={index} {...post} />)}
         </div>
       </div>
     </div>
   );
 };
 
-export default TwitterComponent;
+export default PostComponent;
