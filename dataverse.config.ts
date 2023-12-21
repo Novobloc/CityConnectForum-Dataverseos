@@ -1,6 +1,6 @@
 export const config = {
-  name: "community-forum", // app name should NOT contain "-"
-  logo: "https://venerable-queijadas-290c8d.netlify.app/logo.png",
+  name: "communityforum", // app name should NOT contain "-"
+  logo: "https://shivamangina.in/favicon.png",
   website: [], // you can use localhost:(port) for testing
   defaultFolderName: "Community Forum",
   description: "",

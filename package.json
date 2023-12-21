@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "scripts": {
     "build:scripts": "npx tsc -p tsconfig.node.json",
-    "create-dataverse-app": "pnpm build:scripts && env-cmd -f .env node --experimental-specifier-resolution=node ./scripts/build/scripts/createDapp.js",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
