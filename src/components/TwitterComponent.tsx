@@ -4,8 +4,6 @@ const TwitterComponent = () => {
   return (
     <div className="bg-blue-900">
       <div className="flex">
-        
-
         <div className="w-full lg:w-2/3 max-w-7xl mx-auto border border-gray-600 h-auto  border-t-0">
           <div className="flex">
             <div className="flex-1 m-2">
