@@ -53,52 +53,6 @@ export function useContent() {
     return res;
   };
 
-  const updateContent = async ({
-    did,
-    model,
-    contentId,
-    content,
-    encrypted
-  }: {
-    did: string;
-    model: Model;
-    contentId: string;
-    content: object;
-    encrypted?: object;
-  }) => {
-    const fileType = contentRecord[contentId]?.fileContent.file.fileType;
-    const fileId = contentRecord[contentId]?.fileContent.file.fileId;
-
-    const res = await dataverseConnector.runOS({
-      method: SYSTEM_CALL.updateIndexFile,
-      params: {
-        fileId,
-        fileContent: {
-          ...content,
-          syncImmediately: true
-        }
-      }
-    });
-
-    return {
-      contentId,
-      content: await reloadContentRecord({
-        did,
-        modelId: model.modelId,
-        contentId
-      })
-    };
-  };
-
-
-  const reloadContentRecord = async ({ did, modelId, contentId }: { did: string; modelId: string; contentId: string }) => {
-    const contentRecord = await loadContents({ did, modelId });
-
-    setContentRecord(contentRecord);
-
-    return contentRecord[contentId];
-  };
-
   const updateContentRecord = (contentObject: ContentObject) => {
     const contentId = contentObject.fileContent.file.contentId;
     const contentRecordCopy = JSON.parse(JSON.stringify(contentRecord)) as Record<
