@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
 const PostPublishComponent = ({ publishPost }: any) => {
-  const [titleInput, setTitleInput] = useState();
-  const [descriptionInput, setDescriptionInput] = useState();
+  const [titleInput, setTitleInput] = useState("");
+  const [descriptionInput, setDescriptionInput] = useState("");
 
   const handlePublishPost = async (e) => {
     e.preventDefault();
@@ -12,6 +12,8 @@ const PostPublishComponent = ({ publishPost }: any) => {
       plainText: descriptionInput
     };
     await publishPost(data);
+    setTitleInput("");
+    setDescriptionInput("");
   };
 
   return (
